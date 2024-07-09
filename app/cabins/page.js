@@ -30,7 +30,7 @@ const filter = searchParams?.capacity ?? "all";
        </div>
         
 
-      <Suspense fallback={<Spinner/>}>
+      <Suspense fallback={<Spinner/>} key={filter}>
         <CabinList filter={filter}/>
       </Suspense>
     </div>
