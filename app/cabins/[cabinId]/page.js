@@ -25,9 +25,14 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const cabin = await getCabin(params.cabinId);
-  const settings = await getSettings();
-  const bookedDates = await getBookedDatesByCabinId(params.cabinId);
+  // const cabin = await getCabin(params.cabinId);
+  // const settings = await getSettings();
+  // const bookedDates = await getBookedDatesByCabinId(params.cabinId);
+ const [cabin, settings, bookedDates]= await Promise.all([
+    getCabin(params.cabinId),
+    getSettings(),
+    getBookedDatesByCabinId(params.cabinId),
+  ]);
 
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
