@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { createContext, useContext, useState } from "react";
 const ReservationContext = createContext();
 const initialState = { from: undefined, to: undefined };
@@ -11,12 +11,9 @@ function ReservationProvider({ children }) {
     </ReservationContext.Provider>
   );
 }
-
 function useReservation() {
-  const context = useContext(ReservationContext);
-  if (context === undefined)
+  if (useContext(ReservationContext) === undefined)
     throw new Error("Context was used outside provider");
-  return context;
+  return useContext(ReservationContext);
 }
-
 export { ReservationProvider, useReservation };
