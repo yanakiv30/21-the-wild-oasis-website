@@ -7,7 +7,7 @@ import { updateGuest } from "../_lib/actions";
 
 function UpdateProfileForm({guest,children}) {
   const [count, setCount] = useState();
-  const {fullName, email, nationality, nationalId, countryFlag} = guest;
+  const {fullName, email, nationality, nationalID, countryFlag} = guest;
 
   return (
     <form action={updateGuest}
@@ -48,7 +48,7 @@ function UpdateProfileForm({guest,children}) {
       <div className="space-y-2">
         <label htmlFor="nationalID">National ID number</label>
         <input        
-        defaultValue={nationalId}
+        defaultValue={nationalID}
           name="nationalID"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
         />
