@@ -122,6 +122,7 @@ export async function getBookedDatesByCabinId(cabinId) {
       });
     })
     .flat();
+    console.log("bookedDates= ", bookedDates);
 
   return bookedDates;
 }
