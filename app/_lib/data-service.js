@@ -11,7 +11,7 @@ export async function getCabin(id) {
     .select("*")
     .eq("id", id)
     .single();
-
+  //console.log("data from getCabin = ",data);
   // For testing
   //  await new Promise((res) => setTimeout(res, 2000));
 
@@ -107,6 +107,7 @@ export async function getBookedDatesByCabinId(cabinId) {
     .select("*")
     .eq("cabinId", cabinId)
     .or(`startDate.gte.${today},status.eq.checked-in`);
+ // console.log("data from bookings table = ", data);
 
   if (error) {
     console.error(error);
@@ -122,7 +123,7 @@ export async function getBookedDatesByCabinId(cabinId) {
       });
     })
     .flat();
-    console.log("bookedDates= ", bookedDates);
+  //console.log("bookedDates= ", bookedDates);
 
   return bookedDates;
 }
