@@ -41,13 +41,12 @@ export async function createBooking(bookingData, formData) {
     hasBreakfast: false,
     status: "unconfirmed",
   };
- // console.log("newBooking=", newBooking);
+  // console.log("newBooking=", newBooking);
 
-  const { error } = await supabase
-    .from("bookings")
-    .insert([newBooking])
-  
+  const { error } = await supabase.from("bookings").insert([newBooking]);
   if (error) throw new Error("Booking could not be created");
+  
+  revalidatePath(`/cabins/${bookingData.cabinId}`);
 }
 
 export async function deleteBooking(bookingId) {
